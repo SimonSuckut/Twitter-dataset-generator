@@ -38,14 +38,13 @@ for acc in accounts :
 	tweet_count.append((count, acc))
 
 tweet_count.sort(key=lambda tup: tup[0], reverse=True)
-tweet_count = tweet_count[:NUM_ACCOUNTS-1]
+tweet_count = tweet_count[:NUM_ACCOUNTS]
 
 print("Using data of:")
 for x in tweet_count:
 	print(x[1], " [", x[0], "]")
 
 biggest_accounts = [x[1] for x in tweet_count]
-biggest_accounts.append('realDonaldTrump')
 
 data = csv_data.loc[csv_data['screen_name'].isin(biggest_accounts)]
 data['id'] = pd.Series(data['id'], dtype=int)
